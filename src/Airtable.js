@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"; //used to fetch requests
+import { Link } from "react-router-dom";
 
 const url = "/api/products"; //where the serverless function is resided
 export const Airtable = () => {
@@ -15,7 +16,7 @@ export const Airtable = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  //here we interate through the products and then destructure them. Then to display them react router down will be used
   return (
     <section className="section section-center">
       <div className="title">
@@ -25,13 +26,13 @@ export const Airtable = () => {
         {products.map((product) => {
           const { id, url, price, name } = product;
           return (
-            <article className="product" key={id}>
+            <Link to={`/${id}`} className="product" key={id}>
               <img src={url} alt={name} />
               <div className="info">
                 <h5>{name}</h5>
                 <h5 className="price">${price}</h5>
               </div>
-            </article>
+            </Link>
           );
         })}
       </div>

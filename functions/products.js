@@ -19,7 +19,7 @@ exports.handler = async (event, context, cb) => {
       if (product.error) {
         return {
           statusCode: 404,
-          body: `No product with id "${id}" was found`,
+          body: `No product with id "${id}" was found`, //awaiting response no product was found
         };
       }
       return {
